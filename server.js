@@ -3,8 +3,9 @@ var bodyParser = require("body-parser");
 var path = require("path");
 var PORT = 8080;
 var app = express();
-var apiRoutes = require("./app/routing/apiRoutes.js")(app);
-var htmlRoutes = require("./app/routing/htmlRoutes.js")(app);
+
+require("./app/routing/apiRoutes.js")(app);
+require("./app/routing/htmlRoutes.js")(app);
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
