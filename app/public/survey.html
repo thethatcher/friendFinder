@@ -12,27 +12,31 @@
 		</div>
 		<div>
 			<form>
+				<br>Name:<br>
+				<input type="text" name="name" id="name">
+				<br>Image URL:<br>
+				<input type="text" name="image" id="image">
 				<br>Q1<br>
-				<input list="values" name="Q1">
+				<input list="values" name="Q1" id="Q1">
 				<br>Q2<br>
-				<input list="values" name="Q2">
+				<input list="values" name="Q2" id="Q2">
 				<br>Q3<br>
-				<input list="values" name="Q3">
+				<input list="values" name="Q3" id="Q3">
 				<br>Q4<br>
-				<input list="values" name="Q4">
+				<input list="values" name="Q4" id="Q4">
 				<br>Q5<br>
-				<input list="values" name="Q5">
+				<input list="values" name="Q5" id="Q5">
 				<br>Q6<br>
-				<input list="values" name="Q6">
+				<input list="values" name="Q6" id="Q6">
 				<br>Q7<br>
-				<input list="values" name="Q7">
+				<input list="values" name="Q7" id="Q7">
 				<br>Q8<br>
-				<input list="values" name="Q8">
+				<input list="values" name="Q8" id="Q8">
 				<br>Q9<br>
-				<input list="values" name="Q9">
+				<input list="values" name="Q9" id="Q9">
 				<br>Q10<br>
-				<input list="values" name="Q10">
-				<input type="submit" name="submit">
+				<input list="values" name="Q10" id="Q10">
+				<button type="submit" name="submit" id="submitBtn">
 
 				<datalist id="values">
 					<option value="1">
@@ -43,8 +47,60 @@
 				</datalist>
 			</form>
 		</div>
-		<a href="/api/friends">API ist friends</a>|
-		<a href="/api/github">Github Repository</a>
+		<a href="/api/friends">API list friends</a><span> |</span>
+		<a href="https://github.com/thethatcher/friendFinder">Github Repository</a>
 	</div>
+
+<script
+  src="https://code.jquery.com/jquery-3.2.1.js"
+  integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
+  crossorigin="anonymous"></script>
+
+	<script type="text/javascript">
+		$("#submitBtn").click(function(event){
+			console.log("submit button clicked.");
+			var newFriend = {
+				name: $("#name").val().trim()
+				,image: $("#image").val().trim()
+				,answers: [
+					parseInt($("#Q1").val()),
+				parseInt($("#Q2").val()),
+				parseInt($("#Q3").val()),
+				parseInt($("#Q4").val()),
+				parseInt($("#Q5").val()),
+				parseInt($("#Q6").val()),
+				parseInt($("#Q7").val()),
+				parseInt($("#Q8").val()),
+				parseInt($("#Q9").val()),
+				parseInt($("#Q10").val())
+				]
+			}
+			console.log(newFriend);
+			var currentURL = window.location.origin;
+			console.log(currentURL);
+			$.ajax({
+				type:"POST"
+				,url: currentURL + "/api/friends"
+				,data: newFriend 
+				,success: function(data){
+				console.log("post method called");
+				$("#name").val("");
+				$("#image").val("");
+				$("#Q1").val("");
+				$("#Q2").val("");
+				$("#Q3").val("");
+				$("#Q4").val("");
+				$("#Q5").val("");
+				$("#Q6").val("");
+				$("#Q7").val("");
+				$("#Q8").val("");
+				$("#Q9").val("");
+				$("#Q10").val("");
+			}
+		});
+			return false;
+			// event.preventDefault();
+		});
+	</script>
 </body>
 </html>
