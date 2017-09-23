@@ -4,11 +4,13 @@ var path = require("path");
 var PORT = 8080;
 var app = express();
 
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: false}));
+
 require("./app/routing/apiRoutes.js")(app);
 require("./app/routing/htmlRoutes.js")(app);
 
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: false}));
+
 // app.use(bodyParser.text());
 // app.use(bodyParser.json({ type: "application/vnd.api+json" }));
 

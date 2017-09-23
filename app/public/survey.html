@@ -36,7 +36,7 @@
 				<input list="values" name="Q9" id="Q9">
 				<br>Q10<br>
 				<input list="values" name="Q10" id="Q10">
-				<button type="submit" name="submit" id="submitBtn">
+				<button type="submit" name="submit" id="submitBtn">submit</button>
 
 				<datalist id="values">
 					<option value="1">
@@ -59,11 +59,12 @@
 	<script type="text/javascript">
 		$("#submitBtn").click(function(event){
 			console.log("submit button clicked.");
+			event.preventDefault();
 			var newFriend = {
 				name: $("#name").val().trim()
 				,image: $("#image").val().trim()
 				,answers: [
-					parseInt($("#Q1").val()),
+				parseInt($("#Q1").val()),
 				parseInt($("#Q2").val()),
 				parseInt($("#Q3").val()),
 				parseInt($("#Q4").val()),
@@ -77,29 +78,23 @@
 			}
 			console.log(newFriend);
 			var currentURL = window.location.origin;
-			console.log(currentURL);
-			$.ajax({
-				type:"POST"
-				,url: currentURL + "/api/friends"
-				,data: newFriend 
-				,success: function(data){
-				console.log("post method called");
-				$("#name").val("");
-				$("#image").val("");
-				$("#Q1").val("");
-				$("#Q2").val("");
-				$("#Q3").val("");
-				$("#Q4").val("");
-				$("#Q5").val("");
-				$("#Q6").val("");
-				$("#Q7").val("");
-				$("#Q8").val("");
-				$("#Q9").val("");
-				$("#Q10").val("");
-			}
-		});
-			return false;
-			// event.preventDefault();
+			$.post(currentURL + "/api/friends", newFriend, 
+				function(data){
+					console.log("post method called, response: ", data);
+					$("#name").val("");
+					$("#image").val("");
+					$("#Q1").val("");
+					$("#Q2").val("");
+					$("#Q3").val("");
+					$("#Q4").val("");
+					$("#Q5").val("");
+					$("#Q6").val("");
+					$("#Q7").val("");
+					$("#Q8").val("");
+					$("#Q9").val("");
+					$("#Q10").val("");
+				}
+			);
 		});
 	</script>
 </body>
