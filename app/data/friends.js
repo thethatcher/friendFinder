@@ -7,7 +7,52 @@ var friendsArray = [
 	{
 		name:"Joe"
 		,image:"https://graph.facebook.com/680666703/picture?width=72&height=72"
-		,answers:[1,2,3,4,5,5,5,5,5,5]
+		,answers:[5,2,3,4,4,3,3,5,1,1]
+	},
+	{
+		name:"Steven"
+		,image:"https://graph.facebook.com/680666703/picture?width=72&height=72"
+		,answers:[4,1,2,5,5,4,3,2,4,4]
+	},
+	{
+		name:"Cindy"
+		,image:"https://graph.facebook.com/680666703/picture?width=72&height=72"
+		,answers:[3,1,5,4,4,1,3,2,4,4]
+	},
+	{
+		name:"Sheila"
+		,image:"https://graph.facebook.com/680666703/picture?width=72&height=72"
+		,answers:[1,2,5,4,1,1,2,1,3,1]
+	},
+	{
+		name:"Mallory"
+		,image:"https://graph.facebook.com/680666703/picture?width=72&height=72"
+		,answers:[2,2,1,5,2,3,1,2,1,1]
+	},
+	{
+		name:"Hanna"
+		,image:"https://graph.facebook.com/680666703/picture?width=72&height=72"
+		,answers:[1,1,1,1,1,1,1,1,1,1]
+	},
+	{
+		name:"Yura"
+		,image:"https://graph.facebook.com/680666703/picture?width=72&height=72"
+		,answers:[2,2,2,2,2,2,2,2,2,2]
+	},
+	{
+		name:"Tony"
+		,image:"https://graph.facebook.com/680666703/picture?width=72&height=72"
+		,answers:[3,3,3,3,3,3,3,3,3,3]
+	},
+	{
+		name:"Sarah"
+		,image:"https://graph.facebook.com/680666703/picture?width=72&height=72"
+		,answers:[4,4,4,4,4,4,4,4,4,4]
+	},
+	{
+		name:"Mariah"
+		,image:"https://graph.facebook.com/680666703/picture?width=72&height=72"
+		,answers:[5,5,5,5,5,5,5,5,5,5]
 	}
 ]
 module.exports = friendsArray;
