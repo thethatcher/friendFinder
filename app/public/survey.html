@@ -63,17 +63,17 @@
 			var newFriend = {
 				name: $("#name").val().trim()
 				,image: $("#image").val().trim()
-				,answers: [
-				parseInt($("#Q1").val()),
-				parseInt($("#Q2").val()),
-				parseInt($("#Q3").val()),
-				parseInt($("#Q4").val()),
-				parseInt($("#Q5").val()),
-				parseInt($("#Q6").val()),
-				parseInt($("#Q7").val()),
-				parseInt($("#Q8").val()),
-				parseInt($("#Q9").val()),
-				parseInt($("#Q10").val())
+				,answers:[
+					parseInt($("#Q1").val()),
+					parseInt($("#Q2").val()),
+					parseInt($("#Q3").val()),
+					parseInt($("#Q4").val()),
+					parseInt($("#Q5").val()),
+					parseInt($("#Q6").val()),
+					parseInt($("#Q7").val()),
+					parseInt($("#Q8").val()),
+					parseInt($("#Q9").val()),
+					parseInt($("#Q10").val())
 				]
 			}
 			console.log(newFriend);
@@ -81,6 +81,7 @@
 			$.post(currentURL + "/api/friends", newFriend, 
 				function(data){
 					console.log("post method called, response: ", data);
+					alert("Your best friend is: " + data.name);
 					$("#name").val("");
 					$("#image").val("");
 					$("#Q1").val("");

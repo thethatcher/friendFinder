@@ -1,18 +1,16 @@
 var express = require("express");
 var bodyParser = require("body-parser");
 var path = require("path");
-var PORT = 8080;
+var PORT = process.env.PORT || 8080;
 var app = express();
 
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.text());
+app.use(bodyParser.json({ type: "application/vnd.api+json" }));
 
 require("./app/routing/apiRoutes.js")(app);
 require("./app/routing/htmlRoutes.js")(app);
-
-
-// app.use(bodyParser.text());
-// app.use(bodyParser.json({ type: "application/vnd.api+json" }));
 
 app.use(function (req, res) {
   res.setHeader('Content-Type', 'text/plain')
@@ -20,6 +18,6 @@ app.use(function (req, res) {
   res.end(JSON.stringify(req.body, null, 2))
 });
 
-app.listen(process.env.PORT || PORT, ()=>{
+app.listen(PORT, ()=>{
 	console.log("Server is listening on PORT " + PORT);
 })
